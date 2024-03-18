@@ -1,0 +1,5 @@
+---
+- name: Copy html file
+  copy: src=files/harry-potter-first-page.html dest=/var/share/html/index.html
+  notify:
+  - restart apache

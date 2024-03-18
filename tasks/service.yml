@@ -1,0 +1,6 @@
+---
+- name: Start and Enable httpd service
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
