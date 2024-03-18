@@ -1,0 +1,6 @@
+# tasks file for dynamic_motd
+- name: Configure Dynamic motd
+  hosts: localhost
+  become: yes
+  roles:
+    - nginx-role
