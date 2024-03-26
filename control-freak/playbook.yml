@@ -1,0 +1,37 @@
+---
+- name: tasks
+  become: true
+  hosts: clients
+  tasks:
+  - name: Chage student password
+    user:
+      name: student
+      update_password: always
+      password: "nice"
+
+  - name: Allow only student and dobby users to login with ssh
+  - lineinfile:
+      dest: /etc/ssh/sshd_config
+      line: AllowUsers: dobby student
+
+  - name: Disable root login
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: '^PermitRootLogin'
+      line: "PermiteRootLogin no"
+      backup: yes
+    become: yes
+    notify:
+      - restart ssh
+
+  - name: Allow only student and dobby to su to root
+    lineinfile:
+      dest: /etc/pam.d/su
+      regexp: '.*/lib/security/pam_wheel.so use_uid$'
+      line: "auth required /lib/security/pam_wheel.so use_uid"
+
+handlers:
+- name: restart ssh
+  systemctl:
+    name: sshd
+    state: restarted

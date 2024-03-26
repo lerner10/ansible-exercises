@@ -1,0 +1,24 @@
+---
+- name: tasks
+  become: true
+  hosts: clients
+  tasks:
+  - name: Install xterm
+    yum:
+      name: nginx
+      state: latest
+      
+  - name: create a directory
+    file:
+      path: /home/student/ron
+      state: directory
+
+  - name: create a file
+    file:
+      path: /home/student/ron/weasley
+      state: touch
+
+  - name: write content
+    lineinfile:
+      path: /home/student/ron/weasley
+      line: bilius

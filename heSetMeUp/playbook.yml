@@ -1,0 +1,40 @@
+---
+- name: tasks
+  hosts: clients
+  become: true
+  vars_files:
+  - var-file.yml
+  tasks:
+  - name: Install git, docker, nslookkup, dig
+    yum:
+      name:
+        - git
+        - docker
+        - nslookup
+        - dig
+
+  - name: Create a user
+    user:
+      name: "admin"
+      password: "{{ 'password' | password_hash('sha512') }}"
+
+  - name: Mount an NFS volume
+    ansible.posix.mount:
+      src: localhost:/root/dir-to-mount
+      path: /mnt/nfs-mount
+      state: mounted
+      fstype: nfs
+      opts: rw,sync,hardansibl
+
+  - name: change number of open files limit
+    lineinfile:
+      dest: /proc/sys/fs/file-max
+      regexp: '*'
+      line: "50001"
+
+  - name: change number of tcp buffer allowed open ports range
+    lineinfile:
+      dest: /proc/sys/net/ipv4/ip_local_port_range
+      regexp: '*'
+      line: "1024   65000"        
+

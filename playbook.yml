@@ -1,0 +1,20 @@
+---
+- name: tasks
+  become: true
+  hosts: clients
+  vars_files:
+  - var-file.yml
+  tasks:
+  - name: run postgres
+    containers.podman.podman_container:
+      name: postgres
+      image: docker.io/postgres
+      ports:
+      - "5432:5432"
+      env:
+        POSTGRES_PASSWORD: "{{ password }}"
+  - name: Create a new database with name "ansible"
+    community.postgresql.postgresql_db:
+      name: "ansibleRules"
+
+     

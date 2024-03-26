@@ -1,0 +1,14 @@
+[localhost]
+localhost
+
+[localhost:vars]
+ansible_user=root
+ansible_password=a
+
+
+[clients]
+192.168.1.13
+
+[clients:vars]
+ansible_user=root
+ansible_password=a

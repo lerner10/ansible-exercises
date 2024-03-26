@@ -1,0 +1,79 @@
+{ 
+  "name": "Luna", 
+  "age": 16, 
+  "gender": "female" 
+} 
+
+
+
+{ 
+  "name": "Cedric", 
+  "last name": "Diggory", 
+  "age": 17, 
+  "hobby": { 
+	  "being awesome" : true, 
+	  "brainwashing" : false, 
+	  "sport" : "saving people" 
+  }, 
+  "colors" : ["Red", "Black", "Yellow"] 
+} 
+
+ 
+
+{ 
+  "name": "Hila", 
+  "job": "Makas", 
+  "car": { 
+    "company": "chevrolet", 
+    "type": "spark LT", 
+    "color": "Blue", 
+    "year": 2017 
+  }, 
+  "kids": [ 
+    "Aviv", 
+    "Shir", 
+    "Gal",     
+    "Noy", 
+    "Noam", 
+    "Lian"
+    ] 
+} 
+
+ 
+  
+{
+  "name"   : "John Smith", 
+  "sku"    : "20223", 
+  "price"  : 23.95, 
+  "shipTo" : {
+    "name" : "Jane Smith", 
+    "address" : "123 Maple Street", 
+    "city" : "Pretendville", 
+    "state" : "NY", 
+    "zip"   : "12345" }, 
+  "billTo" : { 
+    "name" : "John Smith", 
+    "address" : "123 Maple Street", 
+    "city" : "Pretendville", 
+    "state" : "NY", 
+    "zip"   : "12345" } 
+} 
+
+ 
+ 
+{ 
+  "browsers": { 
+    "firefox": { 
+      "name": "Firefox", 
+      "pref_url": "about:config", 
+      "releases": { 
+        "1": { 
+          "release_date": "2004-11-09", 
+          "status": "retired", 
+          "engine": "Gecko", 
+          "engine_version": "1.7" 
+        } 
+      } 
+    } 
+  } 
+} 

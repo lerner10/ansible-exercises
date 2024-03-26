@@ -1,0 +1,2 @@
+vault file is like a regular var file, but it is encrypted
+so when I want to run the playbook I need to pass the flag --ask-vault-pass

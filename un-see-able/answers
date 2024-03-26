@@ -1,0 +1,6 @@
+
+ansible -i hosts -m shell -a "ls" all
+
+ansible -i hosts -m yum -a "name=nginx state=latest"
+
+
