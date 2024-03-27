@@ -1,0 +1,6 @@
+---
+- name: Permit http traffic
+  ansible.posix.firewalld:
+    port: 80/tcp
+    permanent: true
+    state: enabled

@@ -4,21 +4,21 @@
   hosts: clients
   tasks:
   - name: Install xterm
-    yum:
-      name: nginx
+    dnf:
+      name: xterm
       state: latest
       
   - name: create a directory
     file:
-      path: /home/student/ron
+      path: /home/dobby/ron
       state: directory
 
   - name: create a file
     file:
-      path: /home/student/ron/weasley
+      path: /home/dobby/ron/weasley
       state: touch
 
   - name: write content
     lineinfile:
-      path: /home/student/ron/weasley
+      path: /home/dobby/ron/weasley
       line: bilius

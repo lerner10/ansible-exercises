@@ -1,5 +1,5 @@
 ---
-- name: Start and Enable httpd service
+- name: Start and Enable nginx service
   service:
     name: nginx
     state: restarted

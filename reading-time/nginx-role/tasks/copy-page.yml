@@ -1,5 +1,10 @@
 ---
+- name: create a directory for page
+  file:
+    path: /var/www
+    state: directory
+      
 - name: Copy html file
-  copy: src=files/harry-potter-first-page.html dest=/var/share/html/index.html
-  notify:
-  - restart apache
+  copy:
+    src: files/harry-potter-first-page.html
+    dest: /var/www
