@@ -1,0 +1,5 @@
+apiVersion: 1
+datasources:
+  - name: not-localhost-promehtheus-real-real
+    url: http://192.168.20.38:9090
+    type: prometheus

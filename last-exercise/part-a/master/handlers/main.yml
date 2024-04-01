@@ -1,0 +1,17 @@
+# handlers file for master
+---
+- name: restart firewalld
+  service:
+    name: firewalld
+    state: restarted
+  
+- name: restart_prometheus_server
+  service:
+    name: "prometheus.service"
+    state: restarted
+    enabled: true
+
+- name: restart grafana-server
+  service:
+    name: grafana-server
+    state: restarted

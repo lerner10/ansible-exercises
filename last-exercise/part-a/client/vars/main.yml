@@ -1,0 +1,8 @@
+---
+# vars file for client
+exporter_binary: 'files/node_exporter'
+exporter_binary_dest: '/usr/bin/prometheus_node_exporter'
+exporter_service: 'files/prometheus-node-exporter.service'
+exporter_service_dest: '/etc/systemd/system/prometheus-node-exporter.service'
+exporter_upstart: 'prometheus-node-exporter.conf'
+exporter_upstart_dest: '/etc/init/prometheus-node-exporter.conf'

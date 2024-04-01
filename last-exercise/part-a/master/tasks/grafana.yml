@@ -1,0 +1,46 @@
+---
+- name: Install grafana
+  dnf:
+    name: grafana
+    state: latest
+
+- name: Copy grafana configuration
+  copy:
+    src: "{{ grafana_configuration }}"
+    dest: "{{ grafana_configuration_dest }}"
+  notify:
+    - restart grafana-server
+  
+- name: Copy grafana.ini
+  copy:
+    src: "{{ grafana.ini }}"
+    dest: "{{ grafana.ini_dest }}"
+  notify:
+    - restart grafana-server
+
+- name: Create a dir for dashboards
+  file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+
+- name: Copy dashboard.json
+  copy:
+    src: files/grafana/node-exporter-full-dashboard.json
+    dest: /var/lib/grafana/dashboards/node-exporter-full-dashboard.json
+  notify:
+    - restart grafana-server
+
+- name: Start and Enable grafana service
+  service:
+    name: grafana-server
+    state: restarted
+    enabled: yes
+
+- name: open port 3000 traffic
+  ansible.posix.firewalld:
+    port: 3000/tcp
+    permanent: true
+    state: enabled
+  notify:
+    - restart firewalld
+

@@ -1,0 +1,17 @@
+---
+# vars file for master
+server_binary: 'files/prometheus/prometheus'
+server_binary_dest: '/usr/bin/prometheus'
+server_service: 'files/prometheus/prometheus.service'
+server_service_dest: '/etc/systemd/system/prometheus.service'
+prometheus_user: 'prometheus'
+prometheus_server_name: 'prometheus'
+
+client_information_dict:
+  'client': '192.168.20.39:9100'
+
+
+  grafana.ini: files/grafana/grafana.ini
+  grafana.ini_dest: /etc/grafana/grafana.ini
+  grafana_configuration: files/grafana/conf/
+  grafana_configuration_dest: /etc/grafana/conf/
