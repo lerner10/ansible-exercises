@@ -1,2 +1,3 @@
 last-exercise/client/files/node_exporter
 last-exercise/master/files/prometheus/prometheus
+last-exercise/master/files/loki/loki-linux-amd64

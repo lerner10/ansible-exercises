@@ -1,4 +1,4 @@
 ---
+- import_tasks: loki.yml
 #- import_tasks: grafana.yml
-- import_tasks: grafana.yml
-- import_tasks: prometheus.yml
+#- import_tasks: prometheus.yml
