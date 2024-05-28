@@ -13,11 +13,14 @@
       - "5432:5432"
       env:
         POSTGRES_PASSWORD: "{{ POSTGRES_PASSWORD }}"
-  - name: Execute Command
+  - name: Register Postgres Version
+    register: pg_version
     containers.podman.podman_container_exec:
       name: postgres
-      command: "cat os-release"
-      workdir: /etc
+      command: "psql --version"
+  - name: Print Postgres Version
+    debug:
+      msg: "{{ pg_version.stdout }}"
 
 - name: PGADMIN
   hosts: pgadmin
