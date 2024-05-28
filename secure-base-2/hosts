@@ -1,1 +1,13 @@
-a
+[postgres]
+192.168.20.59
+
+[pgadmin]
+192.168.20.69
+
+[postgres:vars]
+ansible_user=root
+ansible_password=0
+
+[pgadmin:vars]
+ansible_user=root
+ansible_password=0
