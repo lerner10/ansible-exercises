@@ -1,0 +1,36 @@
+---
+- name: POSTGRES
+  hosts: postgres
+  vars_files:
+  - vault.yaml
+  tasks:
+  - name: Create Postgres Container
+    containers.podman.podman_container:
+      name: postgres
+      image: docker.io/postgres
+      volume: "postgres_data:/var/lib/postgresql"
+      ports:
+      - "5432:5432"
+      env:
+        POSTGRES_PASSWORD: "{{ POSTGRES_PASSWORD }}"
+  - name: Execute Command
+    containers.podman.podman_container_exec:
+      name: postgres
+      command: "cat os-release"
+      workdir: /etc
+
+- name: PGADMIN
+  hosts: pgadmin
+  vars_files:
+  - vault.yaml
+  tasks:
+  - name: Create Pgadmin container
+    containers.podman.podman_container:
+      name: pgadmin
+      image: docker.io/dpage/pgadmin4
+      volume: "pgadmin_data:/var/lib/pgadmin"
+      ports:
+      - "80:80"
+      env:
+        PGADMIN_DEFAULT_EMAIL: "{{ PGADMIN_EMAIL }}"
+        PGADMIN_DEFAULT_PASSWORD: "{{ PGADMIN_PASSWORD }}"
