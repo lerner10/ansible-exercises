@@ -1,22 +1,23 @@
 ---
-- name: tasks
-  become: true
-  hosts: clients
+- name: POSTGRES
+  hosts: postgres
   vars_files:
-  - var-file.yml
+  - vault.yaml
   tasks:
-  - name: run postgres
+  - name: Create Postgres Container
     containers.podman.podman_container:
       name: postgres
       image: docker.io/postgres
+      volume: "postgres_data:/var/lib/postgresql"
       ports:
       - "5432:5432"
       env:
-        POSTGRES_PASSWORD: "{{ {{ password  }} | password_hash('sha512') }}"
-  - name: Execute command
+        POSTGRES_PASSWORD: "{{ POSTGRES_PASSWORD }}"
+  - name: Register Postgres Version
+    register: pg_version
     containers.podman.podman_container_exec:
       name: postgres
-      command: "cat redhat-release"
-      workdir: /etc
-
-
+      command: "psql --version"
+  - name: Print Postgres Version
+    debug:
+      msg: "{{ pg_version.stdout }}"
