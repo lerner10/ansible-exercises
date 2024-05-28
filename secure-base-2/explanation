@@ -4,6 +4,4 @@ Connect the postgres container to volume to gain persistence
 
 Create a pgadmin container with volume, configure email and password from vault env vars
 
-MAKE SURE YOU ARE USING TWO DIFFERENT VAULT FILES
-
 Enter the pgadmin and connect between the pgadmin to postgres, restart both containers and make sure there is persistence
