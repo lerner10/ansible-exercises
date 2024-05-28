@@ -1,1 +1,1 @@
-Those are all ptbses for ansible chapter in matas3
+Those are some ptbses for ansible chapter in matas3
