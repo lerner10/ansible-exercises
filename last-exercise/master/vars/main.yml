@@ -15,3 +15,12 @@ client_information_dict:
   grafana.ini_dest: /etc/grafana/grafana.ini
   grafana_configuration: files/grafana/conf/
   grafana_configuration_dest: /etc/grafana/conf/
+
+
+
+loki_binary: 'files/loki/loki'
+loki_binary_dest: '/usr/bin/loki'
+loki_service: 'files/loki/loki.service'
+loki_service_dest: '/etc/systemd/system/loki.service'
+loki_configuration: 'files/loki/loki-configuration.yaml'
+loki_configuration_dest: '/etc/loki/loki-configuration.yaml'

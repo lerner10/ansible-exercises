@@ -1,0 +1,27 @@
+---
+- name: Creates /etc/loki directory
+  ansible.builtin.file:
+    path: /etc/loki
+    state: directory
+  
+- name: copy loki configuration file
+  copy:
+    src: "{{ loki_configuration }}"
+    dest: "{{ loki_configuration_dest }}"
+
+- name: copy the loki binary to {{ loki_binary_dest }}
+  copy:
+    src: "{{ loki_binary }}"
+    dest: "{{ loki_binary_dest }}"
+    mode: 0755
+
+- name: put systemd service file in place
+  copy:
+    src: "{{ loki_service }}"
+    dest: "{{ loki_service_dest }}"
+
+- name: Start and Enable loki service
+  service:
+    name: loki
+    state: restarted
+    enabled: yes

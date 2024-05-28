@@ -1,5 +1,5 @@
 # tasks file for dynamic_motd
 - name: Configure Dynamic motd
-  hosts: "39"
+  hosts: "38"
   roles:
     - master

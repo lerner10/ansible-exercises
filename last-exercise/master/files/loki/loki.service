@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/usr/bin/loki --config.file=/etc/loki/loki-configuration.yaml
+
+
+[Install]
+WantedBy=multi-user.target
