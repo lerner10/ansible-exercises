@@ -1,0 +1,7 @@
+---
+__chrony_pkg: chrony
+__chrony_service: chronyd
+__chrony_config: /etc/chrony.conf
+__chrony_driftfile: /var/lib/chrony/drift
+__chrony_keyfile: /etc/chrony.keys
+__chrony_logdir: /var/log/chrony

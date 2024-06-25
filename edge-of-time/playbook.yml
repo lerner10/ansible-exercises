@@ -1,0 +1,5 @@
+# tasks file for dynamic_motd
+- name: Configure Dynamic motd
+  hosts: "39"
+  roles:
+    - engonzal.chrony

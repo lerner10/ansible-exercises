@@ -1,0 +1,15 @@
+---
+- name: Install HAProxy on RHEL 8
+  hosts: haproxy
+  become: true
+  tasks:
+    - name: Install HAProxy
+      dnf:
+        name: haproxy
+        state: present
+
+    - name: Start HAProxy service
+      service:
+        name: haproxy
+        state: started
+        enabled: yes

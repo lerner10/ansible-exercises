@@ -1,0 +1,20 @@
+---
+# Configure Variables
+- include_tasks: variables.yml
+
+# Install Chrony
+- name: Install Chrony
+  package:
+    name: "chrony"
+    state: present
+
+- name: Install chrony config
+  template:
+    src: chrony.conf.j2
+    dest: "{{ chrony_config }}"
+  notify: restart chrony
+
+- name: Ensure chrony starts on boot
+  service:
+    name: "{{ chrony_service }}"
+    enabled: yes

@@ -1,0 +1,38 @@
+---
+- name: Include os-specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "vars/{{ ansible_os_family }}-{{ ansible_distribution_major_version }}.yml"
+        - "vars/{{ ansible_os_family }}.yml"
+      errors: ignore
+
+- name: Define chrony_pkg
+  set_fact:
+    chrony_pkg: "{{ __chrony_pkg }}"
+  when: chrony_service is not defined
+
+- name: Define chrony_service
+  set_fact:
+    chrony_service: "{{ __chrony_service }}"
+  when: chrony_service is not defined
+
+- name: Define chrony_config
+  set_fact:
+    chrony_config: "{{ __chrony_config }}"
+  when: chrony_config is not defined
+
+- name: Define chrony_keyfile
+  set_fact:
+    chrony_keyfile: "{{ __chrony_keyfile }}"
+  when: chrony_keyfile is not defined
+
+- name: Define chrony_driftfile
+  set_fact:
+    chrony_driftfile: "{{ __chrony_driftfile }}"
+  when: chrony_driftfile is not defined
+
+- name: Define chrony_logdir
+  set_fact:
+    chrony_logdir: "{{ __chrony_logdir }}"
+  when: chrony_logdir is not defined
