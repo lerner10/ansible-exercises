@@ -1,0 +1,12 @@
+---
+# defaults file for engonzal.chrony
+chrony_pools:
+    # 2 sources from ntp.ubuntu.com which some are ipv6 enabled
+  - ntp.ubuntu.com        iburst maxsources 2
+    # 1 source from [01].ubuntu.pool.ntp.org each (ipv4 only atm)
+  - 0.ubuntu.pool.ntp.org iburst maxsources 1
+    # 2 sources from time.cloudflare.com
+  - time.cloudflare.com iburst prefer maxsources 2
+
+chrony_measurements_statistics_tracking: false
+chrony_disable_external_client: true

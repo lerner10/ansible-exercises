@@ -1,0 +1,46 @@
+# Welcome to the chrony configuration file. See chrony.conf(5) for more
+# information about usuable directives.
+
+{% if chrony_servers is defined %}
+{% for item in chrony_servers -%}
+server {{ item }}
+{% endfor %}
+{% endif %}
+
+{% if chrony_pools is defined %}
+{% for item in chrony_pools -%}
+pool {{ item }}
+{% endfor %}
+{% endif %}
+
+# This directive specify the location of the file containing ID/key pairs for
+# NTP authentication.
+keyfile {{ chrony_keyfile }}
+
+# This directive specify the file into which chronyd will store the rate
+# information.
+driftfile {{ chrony_driftfile }}
+
+{% if chrony_measurements_statistics_tracking %}
+log tracking measurements statistics
+{% endif %}
+
+# Log files location.
+logdir {{ chrony_logdir }}
+
+# Stop bad estimates upsetting machine clock.
+maxupdateskew 100.0
+
+# This directive enables kernel synchronisation (every 11 minutes) of the
+# real-time clock. Note that it can’t be used along with the 'rtcfile' directive.
+rtcsync
+
+# Step the system clock instead of slewing it if the adjustment is larger than
+# one second, but only in the first three clock updates.
+makestep 1 3
+
+{% if chrony_disable_external_client %}
+# Make chrony only accessible locally
+bindcmdaddress 127.0.0.1
+bindcmdaddress ::1
+{% endif %}

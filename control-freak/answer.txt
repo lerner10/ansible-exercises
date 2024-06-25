@@ -1,0 +1,1 @@
+Using sudo before su allows you to switch user without entering password because you do this as root

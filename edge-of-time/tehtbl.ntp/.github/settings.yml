@@ -1,0 +1,4 @@
+---
+repository:
+  description: Install and configure NTP on your system.
+  homepage: https://github.com/tehtbl/ansible-role-ntp
